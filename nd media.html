@@ -1,0 +1,100 @@
+import React from "react";
+import { Search } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+
+const categories = [
+  { name: "Amakuru", link: "#news" },
+  { name: "Ubucuruzi", link: "#" },
+  { name: "Imyidagaduro", link: "#" },
+  { name: "Uburezi", link: "#education" },
+  { name: "Ikoranabuhanga", link: "#" },
+  { name: "Stars (Abahanzi & Abakinnyi ba Filime)", link: "#stars" },
+];
+
+const newsSources = [
+  { name: "The New Times (Rwanda)", link: "https://www.newtimes.co.rw/" },
+  { name: "Igihe", link: "https://www.igihe.com/" },
+  { name: "BBC News", link: "https://www.bbc.com/news" },
+  { name: "CNN", link: "https://www.cnn.com/" },
+  { name: "Al Jazeera", link: "https://www.aljazeera.com/" },
+  { name: "The Guardian", link: "https://www.theguardian.com/" },
+  { name: "New York Times", link: "https://www.nytimes.com/" },
+];
+
+const educationSources = [
+  { name: "Ministry of Education (Rwanda)", link: "https://www.mineduc.gov.rw/" },
+  { name: "UNESCO Education", link: "https://en.unesco.org/themes/education" },
+  { name: "Harvard University", link: "https://www.harvard.edu/" },
+  { name: "University of Oxford", link: "https://www.ox.ac.uk/" },
+  { name: "African Union Education", link: "https://edu-au.org/" },
+  { name: "US Department of Education", link: "https://www.ed.gov/" },
+];
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      {/* Navigation */}
+      <nav className="bg-white p-4 shadow-md rounded-2xl mb-6 flex justify-between items-center">
+        <h1 className="text-xl font-bold">ND ALL IN ONE</h1>
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Shakisha links..."
+            className="border rounded-full px-4 py-2 pr-10 w-64 focus:outline-none"
+          />
+          <Search className="absolute right-3 top-2.5 text-gray-500" size={20} />
+        </div>
+      </nav>
+
+      {/* Categories */}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {categories.map((category, index) => (
+          <Card key={index} className="cursor-pointer hover:shadow-lg transition-all">
+            <CardContent className="p-4 text-center">
+              <a href={category.link} className="text-lg font-semibold">
+                {category.name}
+              </a>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* News Section */}
+      <div className="mt-10">
+        <h2 className="text-2xl font-bold mb-4">Amakuru (News)</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {newsSources.map((news, index) => (
+            <Card key={index} className="cursor-pointer hover:shadow-lg transition-all">
+              <CardContent className="p-4 text-center">
+                <a href={news.link} className="text-lg font-semibold" target="_blank" rel="noopener noreferrer">
+                  {news.name}
+                </a>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* Education Section */}
+      <div className="mt-10">
+        <h2 className="text-2xl font-bold mb-4">Uburezi (Education)</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {educationSources.map((edu, index) => (
+            <Card key={index} className="cursor-pointer hover:shadow-lg transition-all">
+              <CardContent className="p-4 text-center">
+                <a href={edu.link} className="text-lg font-semibold" target="_blank" rel="noopener noreferrer">
+                  {edu.name}
+                </a>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="mt-10 p-4 bg-white shadow-md rounded-2xl text-center">
+        <p className="text-gray-600">&copy; 2025 ND ALL IN ONE. All Rights Reserved.</p>
+      </footer>
+    </div>
+  );
+}
